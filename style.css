@@ -1,0 +1,100 @@
+#result-table th,
+#result-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 20%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  font-weight: 400;
+
+}
+
+#result-table th {
+  background-color: #f0f0f0;
+}
+
+#result-table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+#input-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+}
+
+#flight-type {
+  margin: 20px;
+}
+
+#arrival-time {
+  margin: 20px;
+}
+
+#add-row-btn {
+  width: 100%;
+}
+
+#table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#result-body {
+  width: 100%;
+}
+
+header {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+footer {
+  display: flex;
+  padding: 0 20px 20px 20px;
+  justify-content: center;
+  font-weight: 600;
+}
+
+table {
+  border-collapse: collapse;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+html {
+  background: darkgray;
+  box-sizing: border-box;
+  font-family: system-ui;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}

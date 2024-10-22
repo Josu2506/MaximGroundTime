@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maximum Ground Time</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>Airline Ground Time Calculator</header>
+
+    <main>
+      <div id="container">
+        <table id="input-table">
+          <thead>
+            <tr>
+              <th>Tipo de Vuelo</th>
+              <th>Hora de Llegada</th>
+              <!-- <th>Tiempo Máximo en Tierra</th>
+              <th>Siguiente Hora de Salida</th> -->
+            </tr>
+            <td>
+              <select id="flight-type">
+                <option value="">-- Seleccione --</option>
+                <option value="Vuelo directo">Vuelo directo</option>
+                <option value="Vuelo indirecto">Vuelo indirecto</option>
+              </select>
+            </td>
+            <td>
+              <input
+                type="time"
+                id="arrival-time"
+                value="00:00"
+                step="60"
+                min="00:00"
+                max="23:59"
+              />
+            </td>
+          </thead>
+          <tbody id="table-body">
+            <!-- rows will be added here -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                <!-- Button to add row to table -->
+                <button id="add-row-btn">Añadir Vuelo</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+        <table id="result-table">
+          <thead>
+            <tr>
+              <th>Hora de Llegada</th>
+              <th>Tipo de Vuelo</th>
+              <th>MGT</th>
+              <th>Hora de salida</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody id="result-body"></tbody>
+        </table>
+      </div>
+    </main>
+    <footer>
+      <p>2024 Airline Schedule. Made by Josu 👨‍💻</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
