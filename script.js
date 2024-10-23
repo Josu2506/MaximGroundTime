@@ -50,6 +50,7 @@ function addRowToResultTable(result) {
   <td>Salida: ${result.nextDepartureTime} horas</td>
   <td><button>X</button></td>
  `;
+  newRow.classList.add("fade-in");
 
   tableBody.appendChild(newRow);
 
@@ -59,7 +60,11 @@ function addRowToResultTable(result) {
 
   deleteButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      button.closest("tr").remove();
+      const row = button.closest("tr");
+      row.classList.add("removing");
+      setTimeout(() => {
+        row.remove();
+      }, 500);
     });
   });
 }
@@ -67,6 +72,12 @@ function addRowToResultTable(result) {
 const addRowBtn = document.querySelector("#add-row-btn");
 
 addRowBtn.addEventListener("click", () => {
+  const flightType = flightTypeSelect.value;
+  if (flightType === "") {
+    alert("Por favor, selecciona un tipo de vuelo.");
+    return;
+  }
+
   const result = calculateMaximumGroundTime();
   const arrivalTime = arrivalTimeInput.value;
   const arrivalTime24 = `${arrivalTime.split(":")[0]}:${
