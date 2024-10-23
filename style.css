@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #2A4C69;
-  --secondary-color: #F7F7F7;
+  --primary-color: #2a4c69;
+  --secondary-color: #f7f7f7;
 }
 
 @keyframes fade-in {
@@ -21,7 +21,8 @@
 #result-table {
   border-collapse: collapse;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
+  display: table;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -37,7 +38,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
+  max-width: 500px;
 }
 
 #table-container {
@@ -48,7 +49,7 @@
 
 #result-table th,
 #result-table td {
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   padding: 10px;
   width: 20%;
   text-align: center;
@@ -61,8 +62,8 @@
 }
 
 #result-table tbody tr td:last-child button {
-  border: 1 px solid #56B3FA;
-  color: #FFFFFF;
+  border: 1 px solid #56b3fa;
+  color: #ffffff;
   border-radius: 5px;
   padding: 5px 10px;
 }
@@ -138,7 +139,6 @@ th {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   padding: 10px;
-  border-bottom: 1px solid var(--secondary-color);
   font-weight: 600;
 }
 
@@ -173,18 +173,19 @@ select:focus {
 
 /* Responsive */
 
-@media (max-width <= 768px) {
+@media (max-width: 768px) {
   #result-table {
     width: 100%;
   }
 
   #input-table {
     width: 100%;
+    table-layout: fixed;
   }
 
   #result-table th,
   #result-table td {
-    width: auto;
+    width: 20%;
   }
 
   th:first-child,
@@ -209,5 +210,23 @@ select:focus {
 
   #result-table td:last-child {
     border-bottom-right-radius: 10px;
+  }
+}
+
+@media (max-width: 520px) {
+  #result-table {
+    table-layout: fixed;
+  }
+
+  #result-table th,
+  #result-table td {
+    width: 20%; 
+  }
+}
+
+@media (max-width: 400px) {
+  #result-table th,
+  #result-table td {
+    font-size: 14px;
   }
 }

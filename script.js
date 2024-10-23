@@ -9,9 +9,9 @@ function calculateMaximumGroundTime(row) {
 
   let maximumTime;
   if (flightType === "Vuelo directo") {
-    maximumTime = 115; //"1 hour and 55 minutes";
-  } else if (flightType === "Vuelo indirecto") {
     maximumTime = 105; //"1 hour and 45 minutes";
+  } else if (flightType === "Vuelo indirecto") {
+    maximumTime = 115; //"1 hour and 55 minutes";
   } else {
     maximumTime = "N/A";
   }
