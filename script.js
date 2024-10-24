@@ -49,8 +49,8 @@ function addRowToResultTable(result) {
   <td>${result.arrivalTime}</td>
   <td>${result.flightType}</td>
   <td>${result.maximumTime} minutos</td>
-  <td>Salida: ${result.nextDepartureTime} horas</td>
-  <td><button>X</button></td>
+  <td>${result.nextDepartureTime} horas</td>
+  <td><button>x</button></td>
  `;
   newRow.classList.add("fade-in");
 
