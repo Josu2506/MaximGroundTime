@@ -3,7 +3,7 @@ const arrivalTimeInput = document.querySelector("#arrival-time");
 const maximumGroundTime = document.querySelector("#maximum-ground-time");
 
 // Function to calculate maximum ground time
-function calculateMaximumGroundTime(row) {
+function calculateMaximumGroundTime() {
   const flightType = flightTypeSelect.value;
   const arrivalTime = arrivalTimeInput.value;
 
@@ -34,8 +34,10 @@ function calculateMaximumGroundTime(row) {
   return { maximumTime, nextDepartureTimeFormatted };
 }
 
+// Function to add row to result table when button is clicked
 function addRowToResultTable(result) {
   const tableBody = document.querySelector("#result-table tbody");
+
 
   const existingRow = tableBody.querySelector("tr");
   if (existingRow) {
@@ -69,6 +71,7 @@ function addRowToResultTable(result) {
   });
 }
 
+// Event listener for add row button
 const addRowBtn = document.querySelector("#add-row-btn");
 
 addRowBtn.addEventListener("click", () => {
@@ -77,7 +80,7 @@ addRowBtn.addEventListener("click", () => {
     alert("Por favor, selecciona un tipo de vuelo.");
     return;
   }
-
+ 
   const result = calculateMaximumGroundTime();
   const arrivalTime = arrivalTimeInput.value;
   const arrivalTime24 = `${arrivalTime.split(":")[0]}:${

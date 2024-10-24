@@ -224,9 +224,32 @@ select:focus {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   #result-table th,
   #result-table td {
-    font-size: 14px;
+    font-size: 12px;
+    padding: 5px;
   }
+  #result-table {
+    width: 100%;
+    max-width: 300px;
+  }
+  button {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  select,
+  input {
+    padding: 5px;
+    font-size: 12px;
+  }
+  header,
+  footer {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 300px) {
+  /* ... */
 }
