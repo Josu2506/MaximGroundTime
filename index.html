@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maximum Ground Time</title>
+    <title>Calculadora de Tiempo de Máximo en Tierra</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>Airline Ground Time Calculator</header>
+    <header>Calculadora de Tiempo Máximo en Tierra</header>
 
     <main>
       <div id="container">
@@ -16,34 +16,33 @@
             <tr>
               <th>Vuelo ✈️</th>
               <th>Llegada 🛬</th>
-              <!-- <th>Tiempo Máximo en Tierra</th>
-              <th>Siguiente Hora de Salida</th> -->
             </tr>
-            <td>
-              <select id="flight-type">
-                <option value="">-- Seleccione --</option>
-                <option value="Vuelo directo">Vuelo directo</option>
-                <option value="Vuelo indirecto">Vuelo indirecto</option>
-              </select>
-            </td>
-            <td>
-              <input
-                type="time"
-                id="arrival-time"
-                value="00:00"
-                step="60"
-                min="00:00"
-                max="23:59"
-              />
-            </td>
           </thead>
-          <tbody id="table-body">
-            <!-- rows will be added here -->
+          <tbody>
+            <tr>
+              <td>
+                <select id="flight-type" aria-label="Tipo de vuelo">
+                  <option value="">-- Seleccione --</option>
+                  <option value="Vuelo directo">Vuelo directo</option>
+                  <option value="Vuelo indirecto">Vuelo indirecto</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="time"
+                  id="arrival-time"
+                  value="00:00"
+                  step="60"
+                  min="00:00"
+                  max="23:59"
+                  aria-label="Hora de llegada"
+                />
+              </td>
+            </tr>
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="4">
-                <!-- Button to add row to table -->
+              <td colspan="2">
                 <button id="add-row-btn">Añadir Vuelo</button>
               </td>
             </tr>
@@ -56,7 +55,7 @@
               <th>Vuelo</th>
               <th>MGT</th>
               <th>Salida 🛫</th>
-              <th> 🗑️ </th>
+              <th>🗑️</th>
             </tr>
           </thead>
           <tbody id="result-body"></tbody>
@@ -66,7 +65,6 @@
     <footer>
       <p>2024 Airline Schedule. Made by Josu 👨‍💻</p>
     </footer>
-
     <script src="script.js" defer></script>
   </body>
 </html>

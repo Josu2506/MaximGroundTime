@@ -1,44 +1,36 @@
 const flightTypeSelect = document.querySelector("#flight-type");
 const arrivalTimeInput = document.querySelector("#arrival-time");
-const maximumGroundTime = document.querySelector("#maximum-ground-time");
+const addRowBtn = document.querySelector("#add-row-btn");
 
-// Function to calculate maximum ground time
-function calculateMaximumGroundTime() {
-  const flightType = flightTypeSelect.value;
-  const arrivalTime = arrivalTimeInput.value;
-
+function calculateMaximumGroundTime(flightType, arrivalTime) {
   let maximumTime;
   if (flightType === "Vuelo directo") {
-    maximumTime = 105; //"1 hour and 45 minutes";
+    maximumTime = 105; // 1 hora y 45 minutos
   } else if (flightType === "Vuelo indirecto") {
-    maximumTime = 115; //"1 hour and 55 minutes";
+    maximumTime = 115; // 1 hora y 55 minutos
   } else {
-    maximumTime = "N/A";
+    return { maximumTime: "N/A", nextDepartureTimeFormatted: "N/A" };
   }
 
-  // Calculate the next departure time
+  const [hours, minutes] = arrivalTime.split(":").map(Number);
   const nextDepartureTime = new Date();
-  nextDepartureTime.setHours(arrivalTime.split(":")[0]);
-  nextDepartureTime.setMinutes(arrivalTime.split(":")[1]);
-  nextDepartureTime.setHours(nextDepartureTime.getHours() + 1);
-  nextDepartureTime.setMinutes(
-    nextDepartureTime.getMinutes() + (maximumTime - 60)
-  );
+  nextDepartureTime.setHours(hours, minutes + maximumTime);
 
-  // Format the next departure time
-
-  const hours = nextDepartureTime.getHours().toString().padStart(2, "0");
-  const minutes = nextDepartureTime.getMinutes().toString().padStart(2, "0");
-  const nextDepartureTimeFormatted = `${hours}:${minutes}`;
+  const nextDepartureTimeFormatted = `${nextDepartureTime
+    .getHours()
+    .toString()
+    .padStart(2, "0")}:${nextDepartureTime
+    .getMinutes()
+    .toString()
+    .padStart(2, "0")}`;
 
   return { maximumTime, nextDepartureTimeFormatted };
 }
 
-// Function to add row to result table when button is clicked
 function addRowToResultTable(result) {
   const tableBody = document.querySelector("#result-table tbody");
 
-
+  // Remove existing row
   const existingRow = tableBody.querySelector("tr");
   if (existingRow) {
     existingRow.remove();
@@ -46,49 +38,40 @@ function addRowToResultTable(result) {
 
   const newRow = document.createElement("tr");
   newRow.innerHTML = `
-  <td>${result.arrivalTime}</td>
-  <td>${result.flightType}</td>
-  <td>${result.maximumTime} minutos</td>
-  <td>${result.nextDepartureTime} horas</td>
-  <td><button>x</button></td>
- `;
+    <td>${result.arrivalTime}</td>
+    <td>${result.flightType}</td>
+    <td>${result.maximumTime} minutos</td>
+    <td>${result.nextDepartureTime} horas</td>
+    <td><button class="delete-btn">x</button></td>
+  `;
   newRow.classList.add("fade-in");
-
   tableBody.appendChild(newRow);
-
-  const deleteButtons = document.querySelectorAll(
-    "#result-table td:last-child button"
-  );
-
-  deleteButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const row = button.closest("tr");
-      row.classList.add("removing");
-      setTimeout(() => {
-        row.remove();
-      }, 500);
-    });
-  });
 }
 
-// Event listener for add row button
-const addRowBtn = document.querySelector("#add-row-btn");
+document.querySelector("#result-table").addEventListener("click", (event) => {
+  if (event.target.classList.contains("delete-btn")) {
+    const row = event.target.closest("tr");
+    row.classList.add("removing");
+    setTimeout(() => {
+      row.remove();
+    }, 500);
+  }
+});
 
 addRowBtn.addEventListener("click", () => {
   const flightType = flightTypeSelect.value;
-  if (flightType === "") {
+  const arrivalTime = arrivalTimeInput.value;
+
+  if (!flightType) {
     alert("Por favor, selecciona un tipo de vuelo.");
     return;
   }
- 
-  const result = calculateMaximumGroundTime();
-  const arrivalTime = arrivalTimeInput.value;
-  const arrivalTime24 = `${arrivalTime.split(":")[0]}:${
-    arrivalTime.split(":")[1]
-  }`;
+
+  const result = calculateMaximumGroundTime(flightType, arrivalTime);
+  const arrivalTime24 = arrivalTime; // Asumir que el formato ya es correcto
   addRowToResultTable({
     arrivalTime: arrivalTime24,
-    flightType: flightTypeSelect.value,
+    flightType: flightType,
     maximumTime: result.maximumTime,
     nextDepartureTime: result.nextDepartureTimeFormatted,
   });

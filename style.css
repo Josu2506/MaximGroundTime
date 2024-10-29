@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --primary-color: #2a4c69;
   --secondary-color: #f7f7f7;
@@ -261,7 +265,6 @@ select:focus {
   thead tr {
     font-size: 12px;
   }
-  
 }
 
 @media (max-width: 364px) {
