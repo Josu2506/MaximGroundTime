@@ -97,7 +97,7 @@ body {
   font-family: system-ui;
   gap: 20px;
   background-image: url("https://i.pinimg.com/1200x/3b/ba/87/3bba8716892164cd13e450287192b755.jpg");
-  background-size: cover;
+  background-size: 100%;
 }
 
 main {
@@ -129,7 +129,7 @@ footer {
   font-weight: 600;
 }
 p {
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 button {
